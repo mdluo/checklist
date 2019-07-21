@@ -1,6 +1,7 @@
 .app {
   height: 100%;
   padding-top: 2.5rem;
+  border-top: 5px solid #337ab7;
 }
 
 .header {

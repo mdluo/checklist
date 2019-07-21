@@ -7,6 +7,7 @@ import { decode } from '../utils/base64';
 import styles from './App.module.css';
 
 import logo from '../logo.svg';
+import { ReactComponent as GithubCorner } from '../github-corner.svg';
 import checklist from '../checklist.json';
 
 FocusStyleManager.onlyShowFocusOnTabs();
@@ -80,6 +81,15 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      <a
+        className="github-corner"
+        href="https://github.com/mdluo/checklist"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <GithubCorner />
+      </a>
+
       <div className={styles.header}>
         <img className={styles.logo} src={logo} alt="logo" />
         <div>

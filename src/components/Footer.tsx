@@ -83,7 +83,14 @@ const Footer: React.FC<Props> = ({ state }) => {
             </a>
           </p>
           <p className="bp3-ui-text bp3-text-muted">
-            &copy; 2019. Made by mdluo.
+            &copy; 2019. Made by mdluo. &nbsp;
+            <a
+              href="https://github.com/mdluo/checklist"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
           </p>
         </div>
       </div>
