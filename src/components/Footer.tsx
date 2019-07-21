@@ -26,7 +26,7 @@ const Footer: React.FC<Props> = ({ state }) => {
 
   const score = total === 0 ? 0 : checked / total;
   const url = score === 0 ? '' : encode(bytes);
-  const fullUrl = `${process.env.REACT_APP_ROOT}/${url}`;
+  const fullUrl = `${window.location.origin}/${url}`;
 
   useEffect(() => {
     window.history.replaceState(window.history.state, '', url);
