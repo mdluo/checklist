@@ -1,0 +1,51 @@
+.footer {
+  padding: 1.5rem 0 1.5rem;
+  background: #FFFFFF;
+}
+
+.wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  margin-bottom: 0 !important;
+  margin-right: 2rem;
+}
+
+.input input {
+  cursor: pointer;
+}
+
+.right {
+  position: relative;
+}
+
+.score {
+  width: 100%;
+  margin-top: -2.4rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+}
+
+.info {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.info p {
+  margin-bottom: 0.1rem;
+}
+
+@media screen and (max-width: 720px) {
+  .result {
+    margin: 0 1rem;
+  }
+}

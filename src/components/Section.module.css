@@ -1,0 +1,38 @@
+.card {
+  max-width: 720px;
+  margin: 1.5rem auto 2rem;
+}
+
+.card::after {
+  content: ' ';
+  width: 1px;
+  height: 1.9rem;
+  position: absolute;
+  margin-top: 1.3rem;
+  margin-left: 0.5rem;
+  display: block;
+  background: #CED3D7;
+}
+
+.switch {
+  margin-right: 0.2rem !important;
+}
+
+.linkIcon {
+  margin-left: 0.4rem;
+  vertical-align: top !important;
+}
+
+.checklist {
+  margin: 1.5rem 0 1rem;
+}
+
+.option {
+  margin: 1rem 0.5rem;
+}
+
+@media screen and (max-width: 720px) {
+  .option {
+    margin: 1rem 0rem;
+  }
+}

@@ -1,0 +1,23 @@
+.app {
+  height: 100%;
+  padding-top: 2.5rem;
+}
+
+.header {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 3.5rem;
+  margin: 1rem 1rem 0 0;
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    padding: 0 1rem;
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "heading": "The software development team checklist",
+  "description": "This checklist is based on my personal preferences, it may not suitable for everyone. If some sections are not applicable to your team, please switch them off, or you can also fork this repo and create your own checklist.",
+  "sections": [
+    {
+      "subject": "The Joel Test for 2017",
+      "link": "https://myers.io/2017/04/04/the-joel-test-for-2017/",
+      "description": "",
+      "items": [
+        "Are all builds handled automatically by a Continuous Integration server?",
+        "Do you make and use daily builds?",
+        "Do you use an issue tracker?",
+        "Do you fix bugs before writing new code?",
+        "Do you have an up-to-date schedule?",
+        "Do you have up to date information on your products performance and usage?",
+        "Do you use the best tools money can buy?",
+        "Do you have a comprehensive test plan?",
+        "Do you have dedicated UI and UX designers?",
+        "Does all code go through code review?",
+        "Do you have coding standards?",
+        "Are new employees given training?"
+      ]
+    },
+    {
+      "subject": "The Twelve-Factor App",
+      "link": "https://12factor.net/",
+      "description": "",
+      "items": [
+        "I. Codebase: One codebase tracked in revision control, many deploys",
+        "II. Dependencies: Explicitly declare and isolate dependencies",
+        "III. Config: Store config in the environment",
+        "IV. Backing services: Treat backing services as attached resources",
+        "V. Build, release, run: Strictly separate build and run stages",
+        "VI. Processes: Execute the app as one or more stateless processes",
+        "VII. Port binding: Export services via port binding",
+        "VIII. Concurrency: Scale out via the process model",
+        "IX. Disposability: Maximize robustness with fast startup and graceful shutdown",
+        "X. Dev/prod parity: Keep development, staging, and production as similar as possible",
+        "XI. Logs: Treat logs as event streams",
+        "XII. Admin processes: Run admin/management tasks as one-off processes"
+      ]
+    },
+    {
+      "subject": "Engineer Culture",
+      "link": "https://translate.google.com/translate?hl=en&sl=zh-CN&tl=en&u=https%3A%2F%2Fcoolshell.cn%2Farticles%2F17497.html",
+      "description": "",
+      "items": [
+        "Self driven",
+        "Flexible working hour and location",
+        "Equal information",
+        "Not afraid of mistakes",
+        "Loose audit system or even no audit system",
+        "20% of the time",
+        "Simplification",
+        "Automation, ruthlessly",
+        "Avoid inefficient organization and management",
+        "Component abstraction",
+        "Develop high-quality products",
+        "Escalate standards and hire better people",
+        "Create a improving culture"
+      ]
+    },
+    {
+      "subject": "The Rails Doctrine",
+      "link": "https://rubyonrails.org/doctrine/",
+      "description": "",
+      "items": [
+        "Optimize for programmer happiness",
+        "Convention over Configuration",
+        "The menu is omakase",
+        "No one paradigm",
+        "Exalt beautiful code",
+        "Provide sharp knives",
+        "Value integrated systems",
+        "Progress over stability",
+        "Push up a big tent"
+      ]
+    },
+    {
+      "subject": "The 4 essential questions to ask yourself as a leader",
+      "link": "https://m.signalvnoise.com/four-essential-questions-to-ask-yourself-as-leader/",
+      "description": "",
+      "items": [
+        "Can I create an environment for people to do their best work?",
+        "Can I create as much clarity and coherence about what needs to get done and why?",
+        "Can I personally model the behavior I want to be true across my team?",
+        "Can I see things for what they are, instead of what I want them to be?"
+      ]
+    },
+    {
+      "subject": "The Programmer's Bill of Rights",
+      "link": "https://blog.codinghorror.com/the-programmers-bill-of-rights/",
+      "description": "",
+      "items": [
+        "Every programmer shall have two monitors",
+        "Every programmer shall have a fast PC",
+        "Every programmer shall have their choice of mouse and keyboard",
+        "Every programmer shall have a comfortable chair",
+        "Every programmer shall have a fast internet connection",
+        "Every programmer shall have quiet working conditions"
+      ]
+    }
+  ]
+}
