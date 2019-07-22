@@ -7,11 +7,12 @@ import {
   Checkbox,
   Switch,
 } from '@blueprintjs/core';
-import { StateSection, Action } from './App';
+import { State } from './App';
 
 import styles from './Section.module.css';
 
 interface Props {
+  state: State;
   index: number;
   section: {
     subject: string;
@@ -19,16 +20,10 @@ interface Props {
     description: string;
     items: string[];
   };
-  stateSection: StateSection;
-  dispatch: React.Dispatch<Action>;
+  dispatch: React.Dispatch<number>;
 }
 
-const Section: React.FC<Props> = ({
-  section,
-  index,
-  stateSection,
-  dispatch,
-}) => {
+const Section: React.FC<Props> = ({ state, section, index, dispatch }) => {
   return (
     <Card className={styles.card} elevation={1}>
       <h4 className="bp3-heading">
@@ -36,13 +31,8 @@ const Section: React.FC<Props> = ({
           className={styles.switch}
           large
           inline
-          checked={stateSection.enabled}
-          onChange={() =>
-            dispatch({
-              type: 'section',
-              payload: [index],
-            })
-          }
+          checked={state[index]}
+          onChange={() => dispatch(index)}
         />
         {section.link ? (
           <a href={section.link} target="_blank" rel="noopener noreferrer">
@@ -56,7 +46,7 @@ const Section: React.FC<Props> = ({
       <p className="bp3-text-large bp3-running-text bp3-text-muted">
         {section.description}
       </p>
-      <Collapse isOpen={stateSection.enabled}>
+      <Collapse isOpen={state[index]}>
         <div className={styles.checklist}>
           {section.items.map((item, i, { length }) => (
             <Fragment key={item}>
@@ -64,13 +54,8 @@ const Section: React.FC<Props> = ({
                 className={styles.option}
                 large
                 label={item}
-                checked={stateSection.items[i]}
-                onChange={() =>
-                  dispatch({
-                    type: 'item',
-                    payload: [index, i],
-                  })
-                }
+                checked={state[index + i + 1]}
+                onChange={() => dispatch(index + i + 1)}
               />
               {i < length - 1 && <Divider />}
             </Fragment>

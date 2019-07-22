@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { FocusStyleManager } from '@blueprintjs/core';
 import Section from './Section';
 import Footer from './Footer';
@@ -6,78 +6,40 @@ import { decode } from '../utils/base64';
 
 import styles from './App.module.css';
 
-import logo from '../logo.svg';
 import { ReactComponent as GithubCorner } from '../github-corner.svg';
+import logo from '../logo.svg';
 import checklist from '../checklist.json';
 
-FocusStyleManager.onlyShowFocusOnTabs();
+export type State = boolean[];
 
-export interface State {
-  [key: string]: StateSection;
-}
-export interface StateSection {
-  enabled: boolean;
-  items: {
-    [key: string]: boolean;
-  };
-}
+let sectionIndexes: number[] = [];
+const totalOptions = checklist.sections.reduce((counter, section) => {
+  sectionIndexes.push(counter);
+  return counter + section.items.length + 1;
+}, 0);
 
-export interface Action {
-  type: 'section' | 'item';
-  payload: number[];
-}
-
-let bytes: boolean[] | null;
+let initialState: State;
 const { pathname } = window.location;
 if (pathname.startsWith('/') && pathname.length > 1) {
-  bytes = decode(pathname.slice(1));
+  initialState = decode(pathname.slice(1));
+} else {
+  initialState = new Array(totalOptions).fill(false);
+  sectionIndexes.forEach(index => (initialState[index] = true));
 }
 
-const initialState: State = {};
-
-let cursor = 0;
-checklist.sections.forEach((section, i) => {
-  const sectionObj: StateSection = {
-    enabled: bytes ? bytes[cursor] : true,
-    items: {},
-  };
-  section.items.forEach((_, j) => {
-    sectionObj.items[`${j}`] = bytes ? bytes[cursor + 1 + j] : false;
-  });
-  initialState[`${i}`] = sectionObj;
-  cursor += section.items.length;
-});
-
-function reducer(state: State, action: Action) {
-  const sectionKey = `${action.payload[0]}`;
-  const itemKey = `${action.payload[1]}`;
-  switch (action.type) {
-    case 'section':
-      return {
-        ...state,
-        [sectionKey]: {
-          ...state[sectionKey],
-          enabled: !state[sectionKey].enabled,
-        },
-      };
-    case 'item':
-      return {
-        ...state,
-        [sectionKey]: {
-          ...state[sectionKey],
-          items: {
-            ...state[sectionKey].items,
-            [itemKey]: !state[sectionKey].items[itemKey],
-          },
-        },
-      };
-    default:
-      throw new Error();
+function reducer(state: State, index: number) {
+  if (index < 0 || index >= state.length) {
+    throw new Error();
   }
+  return state.slice(0, index).concat(!state[index], state.slice(index + 1));
 }
 
 const App: React.FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    FocusStyleManager.onlyShowFocusOnTabs();
+  }, []);
 
   return (
     <div className={styles.app}>
@@ -89,7 +51,6 @@ const App: React.FC = () => {
       >
         <GithubCorner />
       </a>
-
       <div className={styles.header}>
         <img className={styles.logo} src={logo} alt="logo" />
         <div>
@@ -102,13 +63,13 @@ const App: React.FC = () => {
       {checklist.sections.map((section, i) => (
         <Section
           key={section.link}
-          index={i}
+          state={state}
+          index={sectionIndexes[i]}
           section={section}
-          stateSection={state[i]}
           dispatch={dispatch}
         />
       ))}
-      <Footer state={state} />
+      <Footer state={state} sectionIndexes={sectionIndexes} />
     </div>
   );
 };

@@ -1,35 +1,36 @@
 import React, { useEffect } from 'react';
 import { InputGroup, Tooltip, Button, Spinner } from '@blueprintjs/core';
 import ClipboardJS from 'clipboard';
-import { State } from './App';
 import { encode } from '../utils/base64';
+import { State } from './App';
 
 import styles from './Footer.module.css';
 
 interface Props {
   state: State;
+  sectionIndexes: number[];
 }
 
-const Footer: React.FC<Props> = ({ state }) => {
-  let total = 0;
+const Footer: React.FC<Props> = ({ state, sectionIndexes }) => {
   let checked = 0;
-  const bytes: boolean[] = [];
-  Object.keys(state).forEach(sectionKey => {
-    const { enabled, items } = state[sectionKey];
-    total += enabled ? Object.keys(items).length : 0;
-    bytes.push(enabled);
-    Object.keys(items).forEach(itemKey => {
-      checked += enabled && items[itemKey] ? 1 : 0;
-      bytes.push(items[itemKey]);
-    });
+  let total = 0;
+
+  sectionIndexes.forEach((index, i) => {
+    const start = index + 1;
+    const end = sectionIndexes[i + 1];
+    const section = state.slice(start, end);
+    if (state[index]) {
+      checked += section.reduce((acc, cur) => (acc += Number(cur)), 0);
+      total += section.length;
+    }
   });
 
   const score = total === 0 ? 0 : checked / total;
-  const url = score === 0 ? '' : encode(bytes);
+  const url = score === 0 ? '' : encode(state);
   const fullUrl = `${window.location.origin}/${url}`;
 
   useEffect(() => {
-    window.history.replaceState(window.history.state, '', url);
+    window.history.replaceState({}, '', fullUrl);
   });
 
   useEffect(() => {
