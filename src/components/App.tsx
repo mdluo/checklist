@@ -1,8 +1,9 @@
 import React, { useReducer, useEffect } from 'react';
 import { FocusStyleManager } from '@blueprintjs/core';
-import Section from './Section';
-import Footer from './Footer';
 import { decode } from '../utils/base64';
+import Section from './Section';
+import Result from './Result';
+import Footer from './Footer';
 
 import styles from './App.module.css';
 
@@ -69,7 +70,8 @@ const App: React.FC = () => {
           dispatch={dispatch}
         />
       ))}
-      <Footer state={state} sectionIndexes={sectionIndexes} />
+      <Result state={state} sectionIndexes={sectionIndexes} />
+      <Footer />
     </div>
   );
 };

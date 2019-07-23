@@ -1,12 +1,12 @@
-.card {
-  max-width: 720px;
-  margin: 1.5rem auto 2rem;
+.section {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .card::after {
   content: ' ';
   width: 1px;
-  height: 1.9rem;
+  height: 2rem;
   position: absolute;
   margin-top: 1.3rem;
   margin-left: 0.5rem;
