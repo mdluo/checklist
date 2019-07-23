@@ -1,6 +1,6 @@
 {
   "heading": "The software development team checklist",
-  "description": "This checklist is based on my personal preferences, it may not suitable for everyone. If some sections are not applicable to your team, please switch them off, or you can also fork this repo and create your own checklist.",
+  "description": "This checklist introduces a methodological approach to assess a software development team from several different perspectives. The selection of questions is based on my personal preferences so it may not suitable for everyone. If some of the sections do not apply to your team, please switch them off, or you can fork this repo and build your version.",
   "sections": [
     {
       "subject": "The Joel Test for 2017",
