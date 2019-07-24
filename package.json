@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@blueprintjs/core": "^3.17.1",
-    "base64url": "^3.0.1",
     "clipboard": "^2.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
