@@ -1,0 +1,25 @@
+.inner {
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 3.5rem;
+  margin: 0.5rem 1rem 0 0;
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    padding: 0 1rem 0.5rem;
+  }
+
+  .inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    margin: 0 0 1.5rem 0;
+  }
+}

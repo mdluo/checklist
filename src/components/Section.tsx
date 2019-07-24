@@ -33,7 +33,7 @@ const Section: React.FC<Props> = ({ state, section, index, dispatch }) => {
               className={styles.switch}
               large
               inline
-              checked={state[index]}
+              checked={!state[index]}
               onChange={() => dispatch(index)}
             />
             {section.link ? (
@@ -48,7 +48,7 @@ const Section: React.FC<Props> = ({ state, section, index, dispatch }) => {
           <p className="bp3-text-large bp3-running-text bp3-text-muted">
             {section.description}
           </p>
-          <Collapse isOpen={state[index]}>
+          <Collapse isOpen={!state[index]}>
             <div className={styles.checklist}>
               {section.items.map((item, i, { length }) => (
                 <Fragment key={item}>

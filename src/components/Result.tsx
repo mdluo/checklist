@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  Classes,
   ResizeSensor,
   FormGroup,
   InputGroup,
@@ -28,7 +29,7 @@ const Result: React.FC<Props> = ({ state, sectionIndexes }) => {
     const start = index + 1;
     const end = sectionIndexes[i + 1];
     const section = state.slice(start, end);
-    if (state[index]) {
+    if (!state[index]) {
       checked += section.reduce((acc, cur) => (acc += Number(cur)), 0);
       total += section.length;
     }
@@ -48,7 +49,10 @@ const Result: React.FC<Props> = ({ state, sectionIndexes }) => {
     scoreIntent = 'success';
   }
 
-  const url = score === 0 ? '' : encode(state);
+  const padRight = state.concat(
+    new Array(8 - ((state.length % 8) % 8)).fill(false)
+  );
+  const url = score === 0 ? '' : encode(padRight);
   const fullUrl = `${window.location.origin}/${url}`;
 
   const [copied, setCopied] = useState(false);
@@ -71,7 +75,17 @@ const Result: React.FC<Props> = ({ state, sectionIndexes }) => {
             {!isMobile ? (
               <FormGroup
                 className={styles.input}
-                label="Share the result with this non-tracking link"
+                label={
+                  <div>
+                    Share the results via this{' '}
+                    <Tooltip
+                      className={`${Classes.TOOLTIP_INDICATOR} ${styles.tip}`}
+                      content="How it works: encoding binary sequence (010101...) into base64"
+                    >
+                      link
+                    </Tooltip>
+                  </div>
+                }
               >
                 <InputGroup
                   leftIcon="link"
@@ -115,7 +129,7 @@ const Result: React.FC<Props> = ({ state, sectionIndexes }) => {
                   setCopied(true);
                   setTimeout(() => setCopied(false), 1000);
                 }}
-                text={copied ? 'Copied' : 'Copy the non-tracking result link'}
+                text={copied ? 'Copied' : 'Copy the results link'}
               />
             )}
             <div className={styles.right}>

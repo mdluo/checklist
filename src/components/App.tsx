@@ -1,14 +1,14 @@
 import React, { useReducer, useEffect } from 'react';
 import { FocusStyleManager } from '@blueprintjs/core';
 import { decode } from '../utils/base64';
+import Link from './Link';
+import Header from './Header';
 import Section from './Section';
 import Result from './Result';
 import Footer from './Footer';
 
 import styles from './App.module.css';
-
 import { ReactComponent as GithubCorner } from '../github-corner.svg';
-import logo from '../logo.svg';
 import checklist from '../checklist.json';
 
 export type State = boolean[];
@@ -19,13 +19,15 @@ const totalOptions = checklist.sections.reduce((counter, section) => {
   return counter + section.items.length + 1;
 }, 0);
 
-let initialState: State;
-const { pathname } = window.location;
-if (pathname.startsWith('/') && pathname.length > 1) {
-  initialState = decode(pathname.slice(1));
-} else {
-  initialState = new Array(totalOptions).fill(false);
-  sectionIndexes.forEach(index => (initialState[index] = true));
+let initialState = new Array(totalOptions).fill(false);
+
+try {
+  const { pathname } = window.location;
+  if (pathname.startsWith('/') && pathname.length > 1) {
+    initialState = decode(pathname.slice(1)).slice(0, totalOptions);
+  }
+} catch (error) {
+  console.warn(error);
 }
 
 function reducer(state: State, index: number) {
@@ -44,23 +46,10 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <a
-        className="github-corner"
-        href="https://github.com/mdluo/checklist"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Link className="github-corner" href="https://github.com/mdluo/checklist">
         <GithubCorner />
-      </a>
-      <div className={styles.header}>
-        <img className={styles.logo} src={logo} alt="logo" />
-        <div>
-          <h2 className="bp3-heading">{checklist.heading}</h2>
-          <p className="bp3-text-large bp3-running-text bp3-text-muted">
-            {checklist.description}
-          </p>
-        </div>
-      </div>
+      </Link>
+      <Header heading={checklist.heading} description={checklist.description} />
       {checklist.sections.map((section, i) => (
         <Section
           key={section.link}
