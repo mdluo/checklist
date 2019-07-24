@@ -1,6 +1,6 @@
 {
   "heading": "The software development team checklist",
-  "description": "This checklist introduces a methodology to assess a software development team from several perspectives. The selection of questions is based on my personal preferences so it may not suitable for everyone. If some of the sections do not apply to your team, please switch them off, or you can fork this repo and build your version.",
+  "description": "This checklist introduces a methodology to assess a software development team from several perspectives. The selection of questions is based on my personal preferences, so it may not suitable for everyone. If some sections do not apply to your team, please switch them off, or you can fork this repo and build your own version.",
   "sections": [
     {
       "subject": "The Joel Test for 2017",
@@ -45,15 +45,15 @@
       "link": "https://translate.google.com/translate?hl=en&sl=zh-CN&tl=en&u=https%3A%2F%2Fcoolshell.cn%2Farticles%2F17497.html",
       "description": "",
       "items": [
-        "Engineers are self driven",
+        "Self driven",
         "Flexible working hours and locations",
-        "Information is equal",
+        "Information equality",
         "Not afraid of mistakes",
-        "Loose approval system or even does not have an approval system",
+        "Loose approval system or even does not have one",
         "20% free time",
         "Simplification",
         "Automation, cruel and ruthless",
-        "Avoid inefficient organizational structures and inefficient management",
+        "Avoid inefficient organizational structures and management",
         "The correct component abstraction",
         "Develop high quality products",
         "Constantly raise the standard and recruit the best people",
