@@ -1,6 +1,6 @@
 {
   "heading": "The software development team checklist",
-  "description": "This checklist introduces a methodology to assess a software development team from several perspectives. The selection of questions is based on my personal preferences, so it may not suitable for everyone. If some sections do not apply to your team, please switch them off, or you can fork this repo and build your own version.",
+  "description": "This checklist introduces methodologies to assess software development teams from several perspectives. The selection of questions is based on my knowledge and preference, so it may not suitable for everyone. If some sections do not apply to your team, please switch them off, or you can fork this repo and build your own version.",
   "sections": [
     {
       "subject": "The Joel Test for 2017",
@@ -19,25 +19,6 @@
         "Does all code go through code review?",
         "Do you have coding standards?",
         "Are new employees given training?"
-      ]
-    },
-    {
-      "subject": "The Twelve-Factor App",
-      "link": "https://12factor.net/",
-      "description": "",
-      "items": [
-        "I. Codebase: One codebase tracked in revision control, many deploys",
-        "II. Dependencies: Explicitly declare and isolate dependencies",
-        "III. Config: Store config in the environment",
-        "IV. Backing services: Treat backing services as attached resources",
-        "V. Build, release, run: Strictly separate build and run stages",
-        "VI. Processes: Execute the app as one or more stateless processes",
-        "VII. Port binding: Export services via port binding",
-        "VIII. Concurrency: Scale out via the process model",
-        "IX. Disposability: Maximize robustness with fast startup and graceful shutdown",
-        "X. Dev/prod parity: Keep development, staging, and production as similar as possible",
-        "XI. Logs: Treat logs as event streams",
-        "XII. Admin processes: Run admin/management tasks as one-off processes"
       ]
     },
     {
@@ -61,19 +42,39 @@
       ]
     },
     {
-      "subject": "The Rails Doctrine",
-      "link": "https://rubyonrails.org/doctrine/",
+      "subject": "The Twelve-Factor App",
+      "link": "https://12factor.net/",
       "description": "",
       "items": [
-        "Optimize for programmer happiness",
-        "Convention over Configuration",
-        "The menu is omakase",
-        "No one paradigm",
-        "Exalt beautiful code",
-        "Provide sharp knives",
-        "Value integrated systems",
-        "Progress over stability",
-        "Push up a big tent"
+        "I. Codebase: One codebase tracked in revision control, many deploys",
+        "II. Dependencies: Explicitly declare and isolate dependencies",
+        "III. Config: Store config in the environment",
+        "IV. Backing services: Treat backing services as attached resources",
+        "V. Build, release, run: Strictly separate build and run stages",
+        "VI. Processes: Execute the app as one or more stateless processes",
+        "VII. Port binding: Export services via port binding",
+        "VIII. Concurrency: Scale out via the process model",
+        "IX. Disposability: Maximize robustness with fast startup and graceful shutdown",
+        "X. Dev/prod parity: Keep development, staging, and production as similar as possible",
+        "XI. Logs: Treat logs as event streams",
+        "XII. Admin processes: Run admin/management tasks as one-off processes"
+      ]
+    },
+    {
+      "subject": "Best Practices for Building a Microservice Architecture",
+      "link": "https://www.vinaysahni.com/best-practices-for-building-a-microservice-architecture",
+      "description": "",
+      "items": [
+        "Maximize team autonomy: Teams can get more done without having to coordinate with other teams",
+        "Optimize for development speed: Hardware is cheap, people are not",
+        "Independently developed & deployed: No coordination should be needed with other service teams",
+        "Private data ownership: Each service should have its own private data",
+        "Aggregation services on network boundaries: Limit the amount of business logic in an aggregation service",
+        "Security: Do not write your own crypto code",
+        "Communication protocols: We'll need to account for both synchronous and asynchronous communications.",
+        "Versioning: All supported versions should co-exist in the same codebase and the same service instances",
+        "Risks of shared libraries: Service specific business logic should stay out of shared libraries",
+        "Full Lifecycle Ownership: Service teams should own, operate and evolve the services they build"
       ]
     },
     {
